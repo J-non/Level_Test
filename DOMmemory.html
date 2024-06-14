@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="one">One</div>
+  <div id="two">Two</div>
+</body>
+<script>
+  // 현상 발생 이유
+  // 전역에서 선언한 변수 two는 페이지가 로드될 때 의 정보를 기준으로 할당되어 있기 때문에
+  // 이벤트 발생 시 계속 console.log로 출력된다.
+  // 해결 방법
+  // two변수를 전역에서 선언하지 말고 이벤트 스코프 안에서 선언하면 된다.
+  const one = document.getElementById("one");
+
+  one.addEventListener("click", function () {
+    const two = document.getElementById("two");
+    if (two === null) return
+    two.remove();
+    console.log(two);
+  })
+</script>
+
+</html>
